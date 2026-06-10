@@ -24,7 +24,7 @@
         <div id="hero-content">
         <h2>Welcome to Tasty Bites</h2>
         <p>Enjoy fresh meals made with love.</p>
-        <button>Order Now</button>
+        <button onclick="openModal()">Order Now</button>
         </div>
     </section>
 
@@ -74,5 +74,45 @@
         <p>&copy; 2026 Tasty Bites Restaurant. All Rights Reserved.</p>
     </footer>
 
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Place your order here!</h2>
+            <label>Your Name</label>
+            <input type="text" id="customerName" placeholder="Enter your name">
+
+            <label>Select Item</label>
+            <select id="menuItem">
+                <option value="burger">Burger</option>
+                <option value="pizza">Pizza</option>
+                <option value="fries">French Fries</option>
+            </select>
+
+            <button onclick="submitOrder()">Submit Order</button>
+
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('customerName').value;
+            const item = document.getElementById('menuItem').value;
+
+            if (name && item) {
+                alert(`Thank you, ${name}! Your order for ${item} has been received.`);
+                closeModal();
+            } else {
+                alert('Please enter your name and select an item.');
+            }
+        }
+    </script>
 </body>
 </html>
